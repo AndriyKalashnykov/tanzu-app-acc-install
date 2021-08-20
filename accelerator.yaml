@@ -65,7 +65,7 @@ engine:
     - chain:   
       - include: [ "pom.xml" ]
       - type: ReplaceText
-        condition: "!(#cleanupTempYTTDir.contains('native'))"
+        condition: "#cleanupTempYTTDir"
         substitutions:
         - text: "#cleanupTempYTTDir"
           with: ""
