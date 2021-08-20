@@ -78,13 +78,13 @@ login: check-env
 #install: @ Install Application Accelerator for VMware Tanzu
 install: check-env login
 	@kapp deploy -a flux -f https://github.com/fluxcd/flux2/releases/download/v0.15.0/install.yaml --yes
-	@rm -rf $$TMP_YTT_DIR
-	@imgpkg pull -b registry.pivotal.io/app-accelerator/acc-install-bundle:0.1.0 -o $$TMP_YTT_DIR
-	@tree $$TMP_YTT_DIR
+	@rm -rf $(TMP_YTT_DIR)
+	@imgpkg pull -b registry.pivotal.io/app-accelerator/acc-install-bundle:0.1.0 -o $(TMP_YTT_DIR)
+	@tree $(TMP_YTT_DIR)
 	@kubectl create namespace accelerator-system
 	@kubectl create secret docker-registry acc-image-regcred -n accelerator-system --docker-server=$$DOCKER_REGISTRY --docker-username=${CORP_LDAP_USER}@vmware.com --docker-password=${CORP_LDAP_PWD} 
 	@export acc_server_service_type=LoadBalancer
-	@ytt -f $$TMP_YTT_DIR/config -f $$TMP_YTT_DIR/values.yml --data-values-env acc | kbld -f $$TMP_YTT_DIR/.imgpkg/images.yml -f- | kapp deploy -y -n accelerator-system -a accelerator -f-
+	@ytt -f $(TMP_YTT_DIR)/config -f $(TMP_YTT_DIR)/values.yml --data-values-env acc | kbld -f $(TMP_YTT_DIR)/.imgpkg/images.yml -f- | kapp deploy -y -n accelerator-system -a accelerator -f-
 	@kubectl apply -f https://raw.githubusercontent.com/AndriyKalashnykov/tanzu-app-acc-install/main/tanzu-app-acc-install.yaml
 	@kubectl get -n accelerator-system pod,service
 
