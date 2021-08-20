@@ -50,6 +50,22 @@ accelerator:
     defaultValue: "CORP_LDAP_PWD"
     required: true
 
+  - name: cleanupTempYTTDir
+    label: Cleanup temp YTT directory?
+    description: "Cleanup temporary YTT directory"
+    inputType: toggle
+    display: true
+    dataType: boolean
+    defaultValue: true
+
 engine:
-  include:
-  - '**'
+  merge:
+    - include: [ "**" ]
+      exclude: [ "README.md", "tanzu-app-acc-install.yaml" ]
+    - chain:   
+      - include: [ "pom.xml" ]
+      - type: ReplaceText
+        condition: "!(#cleanupTempYTTDir.contains('native'))"
+        substitutions:
+        - text: "#cleanupTempYTTDir"
+          with: ""
