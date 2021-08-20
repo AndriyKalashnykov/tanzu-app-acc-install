@@ -85,6 +85,7 @@ install: check-env login
 	@kubectl create secret docker-registry acc-image-regcred -n accelerator-system --docker-server=$$DOCKER_REGISTRY --docker-username=${CORP_LDAP_USER}@vmware.com --docker-password=${CORP_LDAP_PWD} 
 	@export acc_server_service_type=LoadBalancer
 	@ytt -f $$TMP_YTT_DIR/config -f $$TMP_YTT_DIR/values.yml --data-values-env acc | kbld -f $$TMP_YTT_DIR/.imgpkg/images.yml -f- | kapp deploy -y -n accelerator-system -a accelerator -f-
+	@kubectl apply -f https://raw.githubusercontent.com/AndriyKalashnykov/tanzu-app-acc-install/main/tanzu-app-acc-install.yaml
 	@kubectl get -n accelerator-system pod,service
 
 #uninstall: @ UnInstall Application Accelerator for VMware Tanzu
