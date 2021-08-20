@@ -1,0 +1,9 @@
+apiVersion: accelerator.tanzu.vmware.com/v1alpha1
+kind: Accelerator
+metadata:
+  name: tanzu-app-acc-install
+spec:
+  git:
+    url: https://github.com/AndriyKalashnykov/tanzu-app-acc-install
+    ref:
+      branch: main

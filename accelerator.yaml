@@ -1,0 +1,55 @@
+accelerator:
+  displayName: Application Accelerator Installer
+  description: Generates Application Accelerator for VMware Tanzu installer
+  iconUrl: https://raw.githubusercontent.com/simple-starters/icons/master/icon-tanzu-light.png
+  tags:
+  - installer
+  - tanzu-app-acc-installer
+
+  options:
+
+  - name: appAccVersion
+    label: Application Accelerator version
+    description: Application Accelerator version
+    required: true
+    defaultValue: 0.1.0
+    inputType: select
+    choices:
+      - value: 0.1.0
+        text: 0.1.0
+      - value: 0.2.0
+        text: 0.2.0
+
+  - name: deleteFluxNetworkPolicies
+    label: Delete previously installed Flux NetworkPolicies?
+    description: "If you already have Flux installed with the networkpolicies but wish to remove them"
+    inputType: toggle
+    display: true
+    dataType: boolean
+    defaultValue: false
+
+  - name: isTKG
+    label: Installing on TKG?
+    description: "NOTE: There have been reports that the NetworkPolicy resources installed by Flux prevent access to the the Flux source controller service when using a TKG cluster. If you are installing on TKG, we recommend filtering out the NetworkPolicy resources"
+    inputType: toggle
+    display: true
+    dataType: boolean
+    defaultValue: false
+
+  - name: tanzuNetLogin
+    label: TanzuNet Login environment variable name
+    display: true
+    description: Provide environment variable name for TanzuNet Login
+    defaultValue: "CORP_LDAP_USER"
+    required: true
+
+  - name: tanzuNetPassword
+    label: TanzuNet Password environment variable name
+    display: true
+    description: Provide environment variable name for TanzuNet Password
+    defaultValue: "CORP_LDAP_PWD"
+    required: true
+
+engine:
+  include:
+  - '**'
