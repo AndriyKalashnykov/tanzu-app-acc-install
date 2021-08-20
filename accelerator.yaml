@@ -1,6 +1,6 @@
 accelerator:
-  displayName: Application Accelerator Installer
-  description: Generates Application Accelerator for VMware Tanzu installer
+  displayName: Application Accelerator Installer for VMware Tanzu
+  description: Generates installer for Application Accelerator for VMware Tanzu 
   iconUrl: https://raw.githubusercontent.com/simple-starters/icons/master/icon-tanzu-light.png
   tags:
   - installer
