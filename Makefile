@@ -96,6 +96,7 @@ uninstall: check-env
 
 get: 
 	@kubectl get gitrepositories,accelerators
+	@kubectl get -n accelerator-system pod,service
 
 add: 
 	@kubectl apply -f https://raw.githubusercontent.com/AndriyKalashnykov/tanzu-app-acc-install/main/tanzu-app-acc-install.yaml	
