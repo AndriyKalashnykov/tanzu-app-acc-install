@@ -67,5 +67,5 @@ engine:
       chain:
       - type: ReplaceText
         substitutions:
-        - text: 'cleanupTempYTTDir'
-          with: 'zzz'
+        - text: "'#cleanupTempYTTDir'"
+          with: "'zzz'"
