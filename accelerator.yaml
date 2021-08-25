@@ -27,7 +27,7 @@ accelerator:
     inputType: toggle
     display: true
     dataType: boolean
-    defaultValue: false
+    defaultValue: true
 
   - name: deleteFluxNetworkPolicies
     label: Delete previously installed Flux NetworkPolicies?
