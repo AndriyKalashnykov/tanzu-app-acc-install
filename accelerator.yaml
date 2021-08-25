@@ -36,6 +36,9 @@ accelerator:
     display: true
     dataType: boolean
     defaultValue: false
+    dependsOn:
+      name: deployFlux
+      value: true      
 
   - name: isTKG
     label: Installing on TKG?
@@ -44,6 +47,9 @@ accelerator:
     display: true
     dataType: boolean
     defaultValue: false
+    dependsOn:
+      name: deployFlux
+      value: true    
 
   - name: tanzuNetLogin
     label: TanzuNet Login environment variable name
@@ -90,10 +96,15 @@ engine:
             - text: "#VERSION"
               with: "#appAccVersion"
         - type: ReplaceText
-          condition: "#deployFlux"   
+          condition: "#deployFlux and !#isTKG"   
           substitutions:
-            - text: "#deployFlux"
+            - text: "#deployFluxNoTKG"
               with: "' '"      
+        - type: ReplaceText
+          condition: "#!deployFlux and #isTKG"   
+          substitutions:
+            - text: "#deployFluxTKG"
+              with: "' '"                
         - type: ReplaceText
           condition: "#deleteFluxNetworkPolicies"   
           substitutions:
