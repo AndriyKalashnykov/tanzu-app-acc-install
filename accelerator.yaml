@@ -60,16 +60,16 @@ accelerator:
 
 engine:
   merge:
-    - include: [ "Makefile2" ]  
-      chain:
+    - include: [ "**" ]  
+      exclude: [ "tanzu-app-acc-install.yaml", "README.md" ]
+    - chain:
+        - include: [ "Makefile2" ]
         - type: ReplaceText
           substitutions:
             - text: "#VERSION"
-              with: "#appAccVersion"      
-    - condition: "#cleanupTempYTTDir"
-      include: [ "Makefile2" ]
-      chain:
-      - type: ReplaceText
-        substitutions:
-        - text: "#cleanupTempYTTDir"
-          with: "' '"
+              with: "#appAccVersion"
+        - type: ReplaceText
+          condition: "#cleanupTempYTTDir"   
+          substitutions:
+            - text: "#cleanupTempYTTDir"
+              with: "' '"
