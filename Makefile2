@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := help
 SHELL := /bin/bash
 
-APP_ACC_VERSION := 0.1.0
+APP_ACC_VERSION := #VERSION
 DOCKER_REGISTRY := registry.pivotal.io
 TMP_YTT_DIR := ~/acc-install-bundle
 
@@ -11,14 +11,14 @@ ifeq ($(strip $(DOCKER_WHICH)),)
 	DOCKER_EXISTS := @echo "ERROR: docker not found. See: https://docs.docker.com/get-docker/" && exit 1
 endif
 
-CORP_LDAP_USER_EXISTS := @printf "CORP_LDAP_USER"
+REGISTRY_USER_EXISTS := @printf "CORP_LDAP_USER"
 ifndef CORP_LDAP_USER
-	CORP_LDAP_USER_EXISTS := @echo "CORP_LDAP_USER is undefined" && exit 1
+	REGISTRY_USER_EXISTS := @echo "CORP_LDAP_USER is undefined" && exit 1
 endif
 
-CORP_LDAP_PWD_EXISTS := @printf "CORP_LDAP_PWD"
+REGISTRY_PWD_EXISTS := @printf "CORP_LDAP_PWD"
 ifndef CORP_LDAP_PWD
-	CORP_LDAP_PWD_EXISTS := @echo "CORP_LDAP_PWD is undefined" && exit 1
+	REGISTRY_PWD_EXISTS := @echo "CORP_LDAP_PWD is undefined" && exit 1
 endif
 
 KUBECTL_EXISTS	:= @printf "kubectl"
@@ -59,9 +59,9 @@ check-env:
 	@printf "Checking pre-requisites: "
 	$(DOCKER_EXISTS)
 	@printf " "
-	$(CORP_LDAP_USER_EXISTS)
+	$(REGISTRY_USER_EXISTS)
 	@printf " "
-	$(CORP_LDAP_PWD_EXISTS)
+	$(REGISTRY_PWD_EXISTS)
 	@printf " "	
 	$(KUBECTL_EXISTS)
 	@printf " "	
