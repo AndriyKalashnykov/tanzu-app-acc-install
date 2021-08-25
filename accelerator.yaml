@@ -63,7 +63,7 @@ engine:
     - include: [ "**" ]
       exclude: [ "README.md", "tanzu-app-acc-install.yaml" ]
     - condition: "#cleanupTempYTTDir"
-      include: [ "Makefile" ]
+      include: [ "Makefile." ]
       chain:
       - type: ReplaceText
         substitutions:
