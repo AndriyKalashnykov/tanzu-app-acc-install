@@ -69,6 +69,14 @@ engine:
             - text: "#VERSION"
               with: "#appAccVersion"
         - type: ReplaceText
+          substitutions:
+            - text: "#REGISTRY_USER"
+              with: "#tanzuNetLogin"
+        - type: ReplaceText
+          substitutions:
+            - text: "#REGISTRY_PWD"
+              with: "#tanzuNetPassword"               
+        - type: ReplaceText
           condition: "#cleanupTempYTTDir"   
           substitutions:
             - text: "#cleanupTempYTTDir"

@@ -11,14 +11,14 @@ ifeq ($(strip $(DOCKER_WHICH)),)
 	DOCKER_EXISTS := @echo "ERROR: docker not found. See: https://docs.docker.com/get-docker/" && exit 1
 endif
 
-REGISTRY_USER_EXISTS := @printf "CORP_LDAP_USER"
-ifndef CORP_LDAP_USER
-	REGISTRY_USER_EXISTS := @echo "CORP_LDAP_USER is undefined" && exit 1
+REGISTRY_USER_EXISTS := @printf "#REGISTRY_USER"
+ifndef #REGISTRY_USER
+	REGISTRY_USER_EXISTS := @echo "#REGISTRY_USER is undefined" && exit 1
 endif
 
-REGISTRY_PWD_EXISTS := @printf "CORP_LDAP_PWD"
-ifndef CORP_LDAP_PWD
-	REGISTRY_PWD_EXISTS := @echo "CORP_LDAP_PWD is undefined" && exit 1
+REGISTRY_PWD_EXISTS := @printf "#REGISTRY_PWD"
+ifndef #REGISTRY_PWD
+	REGISTRY_PWD_EXISTS := @echo "#REGISTRY_PWD is undefined" && exit 1
 endif
 
 KUBECTL_EXISTS	:= @printf "kubectl"
@@ -75,7 +75,7 @@ check-env:
 
 #login: @ Login to a registry
 login: check-env
-	@docker login --username $$CORP_LDAP_USER@vmware.com --password $$CORP_LDAP_PWD  $$DOCKER_REGISTRY
+	@docker login --username $$#REGISTRY_USER@vmware.com --password $$#REGISTRY_PWD  $$DOCKER_REGISTRY
 
 #install: @ Install Application Accelerator for VMware Tanzu
 install: check-env login
@@ -84,7 +84,7 @@ install: check-env login
 	@imgpkg pull -b registry.pivotal.io/app-accelerator/acc-install-bundle:$(APP_ACC_VERSION) -o $(TMP_YTT_DIR)
 	@tree $(TMP_YTT_DIR)
 	@kubectl create namespace accelerator-system
-	@kubectl create secret docker-registry acc-image-regcred -n accelerator-system --docker-server=$$DOCKER_REGISTRY --docker-username=${CORP_LDAP_USER}@vmware.com --docker-password=${CORP_LDAP_PWD} 
+	@kubectl create secret docker-registry acc-image-regcred -n accelerator-system --docker-server=$$DOCKER_REGISTRY --docker-username=${#REGISTRY_USER}@vmware.com --docker-password=${REGISTRY_PWD} 
 	@export acc_server_service_type=LoadBalancer
 	@ytt -f $(TMP_YTT_DIR)/config -f $(TMP_YTT_DIR)/values.yml --data-values-env acc | kbld -f $(TMP_YTT_DIR)/.imgpkg/images.yml -f- | kapp deploy -y -n accelerator-system -a accelerator -f-
 	@kubectl get -n accelerator-system pod,service
