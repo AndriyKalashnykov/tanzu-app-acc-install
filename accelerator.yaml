@@ -41,14 +41,16 @@ accelerator:
     label: TanzuNet Login environment variable name
     display: true
     description: Provide environment variable name for TanzuNet Login
-    defaultValue: "TANZU_NET_USER"
+    # defaultValue: "TANZU_NET_USER"
+    defaultValue: "CORP_LDAP_USER"
     required: true
 
   - name: tanzuNetPassword
     label: TanzuNet Password environment variable name
     display: true
     description: Provide environment variable name for TanzuNet Password
-    defaultValue: "TANZU_NET_PWD"
+    # defaultValue: "TANZU_NET_PWD"
+    defaultValue: "CORP_LDAP_PWD"
     required: true
 
   - name: cleanupTempYTTDir
