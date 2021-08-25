@@ -65,7 +65,7 @@ engine:
         - type: ReplaceText
           substitutions:
             - text: "#VERSION"
-              with: "'#appAccVersion'"      
+              with: "#appAccVersion"      
     - condition: "#cleanupTempYTTDir"
       include: [ "Makefile2" ]
       chain:
