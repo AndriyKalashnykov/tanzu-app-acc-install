@@ -96,12 +96,12 @@ engine:
             - text: "#VERSION"
               with: "#appAccVersion"
         - type: ReplaceText
-          condition: "#deployFlux and !#isTKG"   
+          condition: "#deployFlux and !(#isTKG)"   
           substitutions:
             - text: "#deployFluxNoTKG"
               with: "' '"      
         - type: ReplaceText
-          condition: "#!deployFlux and #isTKG"   
+          condition: "!(#deployFlux) and #isTKG"   
           substitutions:
             - text: "#deployFluxTKG"
               with: "' '"                
