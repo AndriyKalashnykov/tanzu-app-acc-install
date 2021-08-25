@@ -66,6 +66,9 @@ accelerator:
     display: true
     description: temporary YTT directory
     defaultValue: " ~/acc-install-bundle"
+    dependsOn:
+      name: cleanupTempYTTDir
+      value: true
     required: true
 
 engine:
