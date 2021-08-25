@@ -5,6 +5,7 @@ accelerator:
   tags:
   - installer
   - tanzu-app-acc-installer
+  - makefile
 
   options:
 
