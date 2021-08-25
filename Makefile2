@@ -79,7 +79,7 @@ login: check-env
 
 #install: @ Install Application Accelerator for VMware Tanzu
 install: check-env login
-	@kapp deploy -a flux -f https://github.com/fluxcd/flux2/releases/download/v0.15.0/install.yaml --yes
+#deployFlux2 @kapp deploy -a flux -f https://github.com/fluxcd/flux2/releases/download/v0.15.0/install.yaml --yes
 #cleanupTempYTTDir	@rm -rf $(TMP_YTT_DIR)
 	@imgpkg pull -b registry.pivotal.io/app-accelerator/acc-install-bundle:$(APP_ACC_VERSION) -o $(TMP_YTT_DIR)
 	@tree $(TMP_YTT_DIR)

@@ -21,6 +21,14 @@ accelerator:
       - value: 0.2.0
         text: 0.2.0
 
+  - name: deployFlux2
+    label: Deploy Flux2
+    description: " Deploy Flux2"
+    inputType: toggle
+    display: true
+    dataType: boolean
+    defaultValue: false
+
   - name: deleteFluxNetworkPolicies
     label: Delete previously installed Flux NetworkPolicies?
     description: "If you already have Flux installed with the networkpolicies but wish to remove them"
@@ -81,6 +89,11 @@ engine:
           substitutions:
             - text: "#VERSION"
               with: "#appAccVersion"
+        - type: ReplaceText
+          condition: "#deployFlux2"   
+          substitutions:
+            - text: "#deployFlux2"
+              with: "' '"              
         - type: ReplaceText
           substitutions:
             - text: "#REGISTRY_USER"
