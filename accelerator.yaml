@@ -63,9 +63,9 @@ engine:
     - include: [ "**" ]
       exclude: [ "README.md", "tanzu-app-acc-install.yaml" ]
     - chain:   
-      - include: [ "pom.xml" ]
+      - include: [ "Makefile" ]
       - type: ReplaceText
         condition: "#cleanupTempYTTDir"
         substitutions:
-        - text: "#cleanupTempYTTDir"
+        - text: "cleanupTempYTTDir"
           with: ""
