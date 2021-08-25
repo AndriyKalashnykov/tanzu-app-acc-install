@@ -3,7 +3,7 @@ SHELL := /bin/bash
 
 APP_ACC_VERSION := #VERSION
 DOCKER_REGISTRY := registry.pivotal.io
-TMP_YTT_DIR := ~/acc-install-bundle
+TMP_YTT_DIR := #TEMP_YTT_DIR
 
 DOCKER_EXISTS	:= @printf "docker"
 DOCKER_WHICH	:= $(shell which docker)

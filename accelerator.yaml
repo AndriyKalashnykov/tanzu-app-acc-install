@@ -61,6 +61,13 @@ accelerator:
     dataType: boolean
     defaultValue: true
 
+  - name: tempYTTDir
+    label: Temporary YTT directory
+    display: true
+    description: temporary YTT directory
+    defaultValue: " ~/acc-install-bundle"
+    required: true
+
 engine:
   merge:
     - include: [ "**" ]  
@@ -84,3 +91,7 @@ engine:
           substitutions:
             - text: "#cleanupTempYTTDir"
               with: "' '"
+        - type: ReplaceText
+          substitutions:
+            - text: "#TEMP_YTT_DIR"
+              with: "#tempYTTDir"                   
