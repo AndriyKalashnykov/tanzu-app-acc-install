@@ -21,9 +21,9 @@ accelerator:
       - value: 0.2.0
         text: 0.2.0
 
-  - name: deployFlux2
-    label: Deploy Flux2
-    description: " Deploy Flux2"
+  - name: deployFlux
+    label: Deploy Flux
+    description: " Deploy Flux"
     inputType: toggle
     display: true
     dataType: boolean
@@ -90,10 +90,15 @@ engine:
             - text: "#VERSION"
               with: "#appAccVersion"
         - type: ReplaceText
-          condition: "#deployFlux2"   
+          condition: "#deployFlux"   
           substitutions:
-            - text: "#deployFlux2"
-              with: "' '"              
+            - text: "#deployFlux"
+              with: "' '"      
+        - type: ReplaceText
+          condition: "#deleteFluxNetworkPolicies"   
+          substitutions:
+            - text: "#deleteFluxNetworkPolicies"
+              with: "' '"                          
         - type: ReplaceText
           substitutions:
             - text: "#REGISTRY_USER"
