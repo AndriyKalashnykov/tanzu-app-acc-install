@@ -60,8 +60,6 @@ accelerator:
 
 engine:
   merge:
-    - include: [ "**" ]
-      exclude: [ "README.md", "tanzu-app-acc-install.yaml" ]
     - include: [ "Makefile2" ]  
       chain:
         - type: ReplaceText
