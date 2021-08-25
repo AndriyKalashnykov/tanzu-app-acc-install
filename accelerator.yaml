@@ -62,10 +62,10 @@ engine:
   merge:
     - include: [ "**" ]
       exclude: [ "README.md", "tanzu-app-acc-install.yaml" ]
-    - chain:   
-      - include: [ "Makefile" ]
+    - condition: "#cleanupTempYTTDir"
+      include: [ "Makefile" ]
+      chain:
       - type: ReplaceText
-        condition: "#cleanupTempYTTDir"
         substitutions:
-        - text: "cleanupTempYTTDir"
+        - text: "#cleanupTempYTTDir"
           with: ""
