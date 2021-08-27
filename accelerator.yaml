@@ -84,8 +84,8 @@ accelerator:
     required: true
 
   - name: appAccServiceType
-    label: Application Accelerator cluster ServiceType
-    description: Application Accelerator cluster ServiceType
+    label: Cluster ServiceType
+    description: Cluster ServiceType
     required: true
     defaultValue: "LoadBalancer"
     inputType: select
