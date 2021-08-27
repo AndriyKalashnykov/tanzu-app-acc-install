@@ -16,7 +16,7 @@ accelerator:
     defaultValue: 0.1.0
     inputType: select
     choices:
-      - value: 0.1.0
+      - value: #appAccServiceType
         text: 0.1.0
       - value: 0.2.0
         text: 0.2.0
@@ -144,4 +144,9 @@ engine:
         - type: ReplaceText
           substitutions:
             - text: "#appAccServiceType"
-              with: "#appAccServiceType"                           
+              with: "#appAccServiceType"
+        - type: ReplaceText
+          condition: "#appAccVersion == 0.1.0"   
+          substitutions:
+            - text: "#0.1.0"
+              with: "' '"                
