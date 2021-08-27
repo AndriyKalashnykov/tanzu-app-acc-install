@@ -76,7 +76,7 @@ check-env:
 
 #login: @ Login to a registry
 login: check-env
-	@docker login --username $$#REGISTRY_USER@vmware.com --password $$#REGISTRY_PWD  $$DOCKER_REGISTRY
+	@docker login --username $$#REGISTRY_USER --password $$#REGISTRY_PWD  $$DOCKER_REGISTRY
 
 #install: @ Install Application Accelerator for VMware Tanzu
 install: check-env login
@@ -87,8 +87,8 @@ install: check-env login
 	@imgpkg pull -b registry.pivotal.io/app-accelerator/acc-install-bundle:$(APP_ACC_VERSION) -o $(TMP_YTT_DIR)
 	@tree $(TMP_YTT_DIR)
 	@kubectl create namespace accelerator-system
-	@kubectl create secret docker-registry acc-image-regcred -n accelerator-system --docker-server=$$DOCKER_REGISTRY --docker-username=${#REGISTRY_USER}@vmware.com --docker-password=${REGISTRY_PWD} 
-	@export acc_server_service_type=LoadBalancer
+	@kubectl create secret docker-registry acc-image-regcred -n accelerator-system --docker-server=$$DOCKER_REGISTRY --docker-username=${#REGISTRY_USER} --docker-password=${REGISTRY_PWD} 
+	@export acc_server_service_type=#appAccServiceType
 	@ytt -f $(TMP_YTT_DIR)/config -f $(TMP_YTT_DIR)/values.yml --data-values-env acc | kbld -f $(TMP_YTT_DIR)/.imgpkg/images.yml -f- | kapp deploy -y -n accelerator-system -a accelerator -f-
 	@kubectl get -n accelerator-system pod,service
 

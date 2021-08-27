@@ -85,6 +85,20 @@ accelerator:
       value: true
     required: true
 
+  - name: appAccServiceType
+    label: Application Accelerator cluster ServiceType
+    description: Application Accelerator cluster ServiceType
+    required: true
+    defaultValue: LoadBalancer
+    inputType: select
+    choices:
+      - value: LoadBalancer
+        text: LoadBalancer
+      - value: NodePort
+        text: NodePort
+      - value: ClusterIP
+        text: ClusterIP
+
 engine:
   merge:
     - include: [ "**" ]  
