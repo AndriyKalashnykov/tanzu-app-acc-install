@@ -16,14 +16,14 @@ accelerator:
     defaultValue: 0.1.0
     inputType: select
     choices:
-      - value: #appAccServiceType
+      - value: 0.1.0
         text: 0.1.0
       - value: 0.2.0
         text: 0.2.0
 
   - name: deployFlux
     label: Deploy Flux
-    description: " Deploy Flux"
+    description: "Deploy Flux"
     inputType: toggle
     display: true
     dataType: boolean
@@ -55,16 +55,14 @@ accelerator:
     label: TanzuNet Login environment variable name
     display: true
     description: Provide environment variable name for TanzuNet Login
-    # defaultValue: "TANZU_NET_USER"
-    defaultValue: "CORP_LDAP_USER"
+    defaultValue: "TANZU_NET_USER"
     required: true
 
   - name: tanzuNetPassword
     label: TanzuNet Password environment variable name
     display: true
     description: Provide environment variable name for TanzuNet Password
-    # defaultValue: "TANZU_NET_PWD"
-    defaultValue: "CORP_LDAP_PWD"
+    defaultValue: "TANZU_NET_PWD"
     required: true
 
   - name: cleanupTempYTTDir
@@ -89,7 +87,7 @@ accelerator:
     label: Application Accelerator cluster ServiceType
     description: Application Accelerator cluster ServiceType
     required: true
-    defaultValue: LoadBalancer
+    defaultValue: "LoadBalancer"
     inputType: select
     choices:
       - value: LoadBalancer
