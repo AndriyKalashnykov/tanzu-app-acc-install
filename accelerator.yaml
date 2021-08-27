@@ -144,11 +144,12 @@ engine:
             - text: "#appAccServiceType"
               with: "#appAccServiceType"
         - type: ReplaceText
-#          condition: "#appAccVersion == '0.1.0'"   
-#          substitutions:
-#            - text: "#0.1.0"
-#              with: "' '"
-        - type: ReplaceText
+          condition: "#appAccVersion == '0.1.0'"   
           substitutions:
-            - text: '#'#appAccVersion
-              with: "' '"                  
+            - text: "#0.1.0"
+              with: "' '"
+        - type: ReplaceText
+          condition: "#appAccVersion == '0.2.0'"   
+          substitutions:
+            - text: "#0.2.0"
+              with: "' '"           
