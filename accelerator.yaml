@@ -150,5 +150,5 @@ engine:
 #              with: "' '"
         - type: ReplaceText
           substitutions:
-            - text: "##appAccVersion"
+            - text: '#'#appAccVersion
               with: "' '"                  
