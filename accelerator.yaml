@@ -140,4 +140,8 @@ engine:
         - type: ReplaceText
           substitutions:
             - text: "#TEMP_YTT_DIR"
-              with: "#tempYTTDir"                   
+              with: "#tempYTTDir"             
+        - type: ReplaceText
+          substitutions:
+            - text: "#appAccServiceType"
+              with: "#appAccServiceType"                           
